@@ -1,0 +1,26 @@
+services:
+  backend:
+    ports:
+      - "3333:3333"
+    build:
+      dockerfile: Dockerfile
+    # other configuration options for the backend service
+    depends_on:
+      - postgres
+
+    command: sh -c "sleep 10 && npm run migrate:db && npm run dev"
+
+  frontend:
+    ports:
+      - "8080:8080"
+    build:
+      dockerfile: Dockerfile-frontend
+    command: npm run dev
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    # other configuration options for the postgres service
