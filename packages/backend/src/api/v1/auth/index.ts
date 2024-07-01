@@ -82,7 +82,7 @@ auth.post("/signup", async (ctx: Context) => {
 
   if (signupMethod === "signup") {
     const { user, org } = await sql.begin(async (sql) => {
-      const plan = process.env.DEFAULT_PLAN || "free"
+      const plan = process.env.DEFAULT_PLAN || "unlimited"
 
       const [existingUser] = await sql`
         select * from account where lower(email) = lower(${email})
