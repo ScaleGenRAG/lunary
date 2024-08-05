@@ -6,11 +6,11 @@ WORKDIR /app
 
 
 # Copy only the frontend folder to the working directory
-COPY frontend ./frontend
+COPY ./frontend ./frontend
 
-COPY shared ./shared
+COPY ./shared ./shared
 
-COPY ml ./ml
+COPY ./ml ./ml
 
 WORKDIR /app/shared
 
